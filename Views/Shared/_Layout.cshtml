@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"] - @Values.ProjectName</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/icon/favicon.png">
+
+    <environment names="Development">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/nivo-slider/nivo-slider.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/material-design-iconic-font/dist/css/material-design-iconic-font.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/animate.css/animate.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/jquery-ui/themes/base/core.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/jquery-ui/themes/base/slider.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/jquery-ui/themes/base/theme.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/plugins/myMenumenu.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/fancybox/source/jquery.fancybox.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/jquery.mb.ytplayer/dist/css/jquery.mb.YTPlayer.min.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/lib/slick-carousel/slick/slick.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/textanimate.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/shortcode/default.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/shortcode/header.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/shortcode/slider.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/shortcode/footer.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/style.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/responsive.css">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/css/color/skin-default.css" data-style="styles">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="@Values.CdnServerAddress/dist/AiurUI.min.css" asp-append-version="true">
+    </environment>
+
+</head>
+<body>
+    <header class="header-area header-wrapper">
+        <div class="header-top-bar plr-185">
+            @*Header*@
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 hidden-xs">
+                        <div class="call-us">
+                            <p class="mb-0 roboto">@Values.CorpPhoneNumber</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="top-link clearfix">
+                            <ul class="link f-right">
+                                <li>
+                                    <a href="wishlist.html">
+                                        <i class="zmdi zmdi-favorite"></i>
+                                        Wish List (0)
+                                    </a>
+                                </li>
+                                <li>
+                                    @if (!SignInManager.IsSignedIn(User))
+                                    {
+                                        <a asp-controller="Auth" asp-action="GoAuth">
+                                            <i class="zmdi zmdi-lock"></i>
+                                            Login
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Values.AccountServerAddress">
+                                            <i class="zmdi zmdi-account-circle"></i>
+                                            Your Profile
+                                        </a>
+
+                                    }
+                                </li>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <li>
+                                        <a href="javascript:$('#logoutForm').submit()">
+                                            <i class="zmdi zmdi-lock-open"></i>
+                                            Sign Out
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <form class="hidden" asp-controller="Home" asp-action="LogOff" method="post" id="logoutForm"></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Navigator on PC*@
+        <div id="sticky-header" class="header-middle-area plr-185">
+            <div class="container-fluid">
+                <div class="full-width-mega-dropdown">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="~/img/logo/logo.png" alt="main logo">
+                                </a>
+                            </div>
+                        </div>
+                        @*Menu on PC*@
+                        <div class="col-md-8 hidden-sm hidden-xs">
+                            <nav id="primary-menu">
+                                <ul class="main-menu text-center">
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="mega-parent">
+                                        <a href="#">Explore</a>
+                                        <div class="mega-menu-area clearfix">
+                                            <div class="mega-menu-link mega-menu-link-4  f-left">
+                                                <ul class="single-mega-item">
+                                                    <li class="menu-title">Collections</li>
+                                                    <li>
+                                                        <a href="elements-header-1-sticky.html">Products</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-controller="Explore" asp-action="Organizations">Organizations</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-controller="Explore" asp-action="Courses">Courses</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="elements-header-1-sticky.html">Examples</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="elements-header-1-sticky.html">Templates</a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="single-mega-item">
+                                                    <li class="menu-title">@Values.ProjectName</li>
+                                                    <li>
+                                                        <a href="elements-featured-product-1.html">Status</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Values.DeveloperServerAddress">Develope</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Values.WikiServerAddress">Wiki</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                            <div class="search-top-cart  f-right">
+                                @*Search Bar*@
+                                <div class="header-search f-left">
+                                    <div class="header-search-inner">
+                                        <button class="search-toggle">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                        <form action="#">
+                                            <div class="top-search-box">
+                                                <input type="text" placeholder="Search here your product...">
+                                                <button type="submit">
+                                                    <i class="zmdi zmdi-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                @*Create*@
+                                <div class="total-cart f-left">
+                                    <div class="total-cart-in">
+                                        <div class="cart-toggler">
+                                            <a href="#">
+                                                <span class="cart-quantity"></span><br>
+                                                <span class="cart-icon">
+                                                    <i class="zmdi zmdi-plus-circle"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <div class="top-cart-inner your-cart">
+                                                    <h5 class="text-capitalize">Create</h5>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="top-cart-inner check-out">
+                                                    <h4 class="text-uppercase">
+                                                        <a href="#">Product</a>
+                                                    </h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="top-cart-inner view-cart">
+                                                    <h4 class="text-uppercase">
+                                                        <a asp-controller="Create" asp-action="CreateOrg">Organization</a>
+                                                    </h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="top-cart-inner check-out">
+                                                    <h4 class="text-uppercase">
+                                                        <a asp-controller="Create" asp-action="CreateCor">Course</a>
+                                                    </h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="top-cart-inner check-out">
+                                                    <h4 class="text-uppercase">
+                                                        <a href="#">Examples</a>
+                                                    </h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="top-cart-inner check-out">
+                                                    <h4 class="text-uppercase">
+                                                        <a href="#">Templates</a>
+                                                    </h4>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @*Menu on Phone*@
+    <div class="mobile-menu-area hidden-lg hidden-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="mobile-menu">
+                        <nav id="dropdown">
+                            <ul>
+                                <li>
+                                    <a asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Collections</a>
+                                    <ul>
+                                        <li>
+                                            <a href="elements-header-1-sticky.html">Products</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Explore" asp-action="Organizations">Organizations</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Explore" asp-action="Courses">Courses</a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-header-1-sticky.html">Examples</a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-header-1-sticky.html">Templates</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">@Values.ProjectName</a>
+                                    <ul>
+                                        <li>
+                                            <a href="elements-featured-product-1.html">Status</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Values.DeveloperServerAddress">Develope</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Values.WikiServerAddress">Wiki</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        @RenderBody()
+        @{
+            await Html.RenderPartialAsync("_footer");
+        }
+        @RenderSection("Modal", required: false)
+    </div>
+
+    <environment names="Development">
+        <script src="@Values.CdnServerAddress/js/modernizr.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery/dist/jquery.js"></script>
+        <script src="@Values.CdnServerAddress/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="@Values.CdnServerAddress/lib/nivo-slider/jquery.nivo.slider.js"></script>
+        <script src="@Values.CdnServerAddress/lib/scrollup/dist/jquery.scrollUp.js"></script>
+        <script src="@Values.CdnServerAddress/lib/slick-carousel/slick/slick.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery-ui/jquery-ui.js"></script>
+        <script src="@Values.CdnServerAddress/lib/wow/dist/wow.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery.meanmenu/jquery.meanmenu.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery.countdown/dist/jquery.countdown.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery-treeview/jquery.treeview.js"></script>
+        <script src="@Values.CdnServerAddress/lib/fancybox/source/jquery.fancybox.js"></script>
+        <script src="@Values.CdnServerAddress/lib/elevatezoom/jquery.elevatezoom.js"></script>
+        <script src="@Values.CdnServerAddress/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+        <script src="@Values.CdnServerAddress/js/textillate.js"></script>
+        <script src="@Values.CdnServerAddress/js/AiurUI.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="@Values.CdnServerAddress/dist/AiurUI.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

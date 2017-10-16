@@ -1,0 +1,115 @@
+﻿@model WWW.Models.CreateViewModels.CreateOrgViewModel
+@{
+    ViewData["Title"] = "Create Organization";
+}
+<!-- BREADCRUMBS SETCTION START -->
+<div class="breadcrumbs-section plr-200 mb-80">
+    <div class="breadcrumbs overlay-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="breadcrumbs-inner">
+                        <h1 class="breadcrumbs-title">@ViewData["Title"]</h1>
+                        <ul class="breadcrumb-list">
+                            <li><a href="/">Home</a></li>
+                            <li>Create</li>
+                            <li>@ViewData["Title"]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BREADCRUMBS SETCTION END -->
+<!-- Start page content -->
+<section id="page-content" class="page-wrapper">
+    <!-- SHOP SECTION START -->
+    <div class="shop-section mb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="cart-tab">
+                        <li>
+                            <a class="active" href="javascript:void(0)">
+                                <span>01</span>
+                                Set up the organization
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span>02</span>
+                                Invite members
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span>03</span>
+                                Organization details
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span>04</span>
+                                Create complete
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <div class="tab-pane active" id="shopping-cart">
+                        <div class="checkout-content box-shadow p-30">
+                            <form asp-controller="Create" asp-action="CreateOrg">
+                                <div class="row">
+                                    <!-- billing details -->
+                                    <div class="col-md-6">
+                                        <div class="billing-details pr-10">
+                                            <h6 class="widget-title border-left mb-20">Organization details</h6>
+                                            <input asp-for="OrgName" type="text" placeholder="New organization name...">
+                                            <input asp-for="BillingEmail" type="text" placeholder="Billing Email...">
+                                            <textarea asp-for="Description" type="text" placeholder="Organization description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="payment-method">
+                                            <h6 class="widget-title border-left mb-20">About Creating Organization</h6>
+                                            <div id="accordion">
+                                                <div class="panel">
+                                                    <h4 class="payment-title box-shadow">
+                                                        <a href="javascript:void(0)">
+                                                            Organization Account
+                                                        </a>
+                                                    </h4>
+                                                    <div class="panel-collapse collapse in">
+                                                        <div class="payment-content">
+                                                            <p>Organization accounts allow your team to plan, build, review, and ship software — all while tracking bugs and discussing ideas.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel">
+                                                    <h4 class="payment-title box-shadow">
+                                                        <a href="javascript:void(0)">
+                                                            Bussiness Account
+                                                        </a>
+                                                    </h4>
+                                                    <div class="panel-collapse collapse in">
+                                                        <div class="payment-content">
+                                                            <p>This business — not Anduin2017 (your user account), will own and/or control any content posted to the organization account.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="submit-btn-1 mt-30 btn-hover-1" type="submit">Next Step</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SHOP SECTION END -->
+</section>
+<!-- End page content -->

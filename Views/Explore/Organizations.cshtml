@@ -1,0 +1,235 @@
+﻿@model WWW.Models.ExploreViewModels.OrganizationsViewModel
+@{
+    ViewData["Title"] = "Explore Organizations";
+}
+<section id="page-content" class="page-wrapper">
+    <div class="shop-section mb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <aside class="widget-search mb-30">
+                        <form action="#">
+                            <input type="text" placeholder="Search here...">
+                            <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                        </form>
+                    </aside>
+                    <aside class="widget widget-categories box-shadow mb-30">
+                        <h6 class="widget-title border-left mb-20">Categories</h6>
+                        <div id="cat-treeview" class="product-cat">
+                            <ul>
+                                <li class="closed">
+                                    <a href="#">Products</a>
+                                    <ul>
+                                        <li><a href="#">Products</a></li>
+                                        <li><a href="#">Organizations</a></li>
+                                        <li><a href="#">Courses</a></li>
+                                        <li><a href="#">Examples</a></li>
+                                        <li><a href="#">Templates</a></li>
+                                    </ul>
+                                </li>
+                                <li class="@(Model.ActivePanle==1?"open":"closed")">
+                                    <a href="#">Organizations</a>
+                                    <ul>
+                                        <li><a href="#">Mobile</a></li>
+                                        <li><a href="#">Tab</a></li>
+                                        <li><a href="#">Watch</a></li>
+                                        <li><a href="#">Head Phone</a></li>
+                                        <li><a href="#">Memory</a></li>
+                                    </ul>
+                                </li>
+                                <li class="closed">
+                                    <a href="#">Courses</a>
+                                    <ul>
+                                        <li><a href="#">Footwear</a></li>
+                                        <li><a href="#">Sunglasses</a></li>
+                                        <li><a href="#">Watches</a></li>
+                                        <li><a href="#">Utilities</a></li>
+                                    </ul>
+                                </li>
+                                <li class="closed">
+                                    <a href="#">Examples</a>
+                                    <ul>
+                                        <li><a href="#">Mobile</a></li>
+                                        <li><a href="#">Tab</a></li>
+                                        <li><a href="#">Watch</a></li>
+                                        <li><a href="#">Head Phone</a></li>
+                                        <li><a href="#">Memory</a></li>
+                                    </ul>
+                                </li>
+                                <li class="closed">
+                                    <a href="#">Templates</a>
+                                    <ul>
+                                        <li><a href="#">Footwear</a></li>
+                                        <li><a href="#">Sunglasses</a></li>
+                                        <li><a href="#">Watches</a></li>
+                                        <li><a href="#">Utilities</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <aside class="widget widget-color box-shadow mb-30">
+                        <h6 class="widget-title border-left mb-20">Language</h6>
+                        <ul>
+                            <li class="color-1"><a href="#">C#</a></li>
+                            <li class="color-2"><a href="#">JavaScript</a></li>
+                            <li class="color-3"><a href="#">PHP</a></li>
+                            <li class="color-4"><a href="#">Python</a></li>
+                            <li class="color-5"><a href="#">Go</a></li>
+                            <li class="color-6"><a href="#">Nodejs</a></li>
+                        </ul>
+                    </aside>
+
+                    <aside class="widget widget-product box-shadow">
+                        <h6 class="widget-title border-left mb-20">recent viewed</h6>
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <a href="single-product.html">
+                                        <img src="img/product/4.jpg" alt="" />
+                                    </a>
+                                </div>
+                                <div class="product-info">
+                                    <h6 class="product-title">
+                                        <a href="single-product.html">Product Name</a>
+                                    </h6>
+                                    <h3 class="pro-price">$ 869.00</h3>
+                                </div>
+                            </div>
+                        }
+                    </aside>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <div class="shop-content">
+                        <div class="shop-option box-shadow mb-30 clearfix">
+                            <ul class="shop-tab f-left" role="tablist">
+                                <li>
+                                    <a href="#grid-view" data-toggle="tab"><i class="zmdi zmdi-view-module"></i></a>
+                                </li>
+                                <li class="active">
+                                    <a href="#list-view" data-toggle="tab"><i class="zmdi zmdi-view-list-alt"></i></a>
+                                </li>
+                            </ul>
+                            <div class="short-by f-left text-center">
+                                <span>Sort by :</span>
+                                <select>
+                                    <option value="volvo">Newest items</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </div>
+                            <div class="showing f-right text-right">
+                                <a class="button xextra-small" asp-controller="Create" asp-action="CreateOrg"><span>Create New </span> </a>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane" id="grid-view">
+                                <div class="row">
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="img/product/7.jpg" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h6 class="product-title">
+                                                        <a href="single-product.html">Product Name </a>
+                                                    </h6>
+                                                    <div class="pro-rating">
+                                                        <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                        <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                        <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                        <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                        <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                    </div>
+                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <ul class="action-button">
+                                                        <li>
+                                                            <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane active" id="list-view">
+                                <div class="row">
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="shop-list product-item">
+                                                <div class="product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="~/img/product/7.jpg" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <div class="clearfix">
+                                                        <h6 class="product-title f-left">
+                                                            <a href="single-product.html">Dummy Product Name </a>
+                                                        </h6>
+                                                        <div class="pro-rating f-right">
+                                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                            <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="brand-name mb-30">Brand Name</h6>
+                                                    <h3 class="pro-price">$ 869.00</h3>
+                                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                                    <ul class="action-button">
+                                                        <li>
+                                                            <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="shop-pagination box-shadow text-center ptblr-10-30">
+                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                            <li><a href="#">01</a></li>
+                            <li><a href="#">02</a></li>
+                            <li><a href="#">03</a></li>
+                            <li><a href="#">...</a></li>
+                            <li><a href="#">05</a></li>
+                            <li class="active"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
